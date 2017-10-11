@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{instrument?.name}}</h3>
+  </div>
+  <div class="panel-body row card-body">
+      <div class="col-sm-4">
+        <img class="thumbnail instrument_image" src="{{instrument?.image}}">
+        <div class="btn-group-sm">
+          <button class="btn btn-warning" (click)="viewDetail()">预约</button>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <p>管理员： {{admin?.last_name + admin?.first_name}}</p>
+        <p>电话： {{admin?.phone}}</p>
+        <p>位置： {{instrument?.location}}</p>
+        <p>编号: {{instrument.id}}</p>
+      </div>
+  </div>
+</div>

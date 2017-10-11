@@ -1,0 +1,21 @@
+h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: normal;
+
+}
+.instrument_image {
+    width: 72px;
+    height: 72px;
+}
+.card-body {
+    height: 150px;
+}
+
+.panel-heading{
+  background-color: #3a87ad;
+}
+.panel-heading .panel-title{
+  color: #ffffff;
+}

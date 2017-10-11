@@ -1,0 +1,88 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{instrument?.name}}</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-5">
+        <div *ngIf="instrument">
+          <img src="{{instrument.image}}" class="thumbnail instrument_image">
+        </div>
+      </div>
+      <div class="col-sm-6 well">
+        <table class="table table-striped table-hover table-responsive">
+          <tr>
+            <th>位置:</th>
+            <td>{{instrument?.location}}</td>
+          </tr>
+          <tr>
+            <th>设备型号:</th>
+            <td>{{instrument?.manufacturer?.chinese_name || instrument?.manufacturer?.english_name}}
+              ({{instrument?.model}})
+            </td>
+          </tr>
+          <tr>
+            <th>设备状态:</th>
+            <td>正常（可预约使用）</td>
+          </tr>
+          <tr>
+            <th>管理员:</th>
+            <td>{{admin?.last_name + admin?.first_name}}</td>
+          </tr>
+          <tr>
+            <th>电话:</th>
+            <td>{{admin?.phone}}</td>
+          </tr>
+          <tr>
+            <th>邮箱:</th>
+            <td>{{admin?.email}}</td>
+          </tr>
+          <tr>
+            <th>预约时间</th>
+            <td>{{instrument?.reservation_start_time}} - {{instrument?.reservation_end_time}}</td>
+          </tr>
+          <tr *ngIf="instrument?.description">
+            <th>功能描述:</th>
+            <td>{{instrument.description}}</td>
+          </tr>
+          <tr *ngIf="instrument?.application">
+            <th>使用范围:</th>
+            <td>{{instrument.application}}</td>
+          </tr>
+          <tr *ngIf="instrument?.accessories">
+            <th>配件明细:</th>
+            <td>{{instrument.accessories}}</td>
+          </tr>
+        </table>
+        <div class="pull-right chart" *ngIf="!chartSchedule; else daTep">
+          <button class="btn btn-success" (click)="toggle()">切换分析表</button>
+        </div>
+        <ng-template #daTep>
+          <div class="pull-right chart">
+            <button class="btn btn-success" (click)="toggle()">切换日程表</button>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <div class="alert alert-danger" *ngIf="!currentUser">
+      <h4>温馨提示： 请登录后再预约</h4>
+    </div>
+
+    <div class="row schedule" *ngIf="!chartSchedule">
+      <reservation-schedule
+        [instrument]="instrument"
+        [currentUser]="currentUser"
+        [userInfo]="userInfo"
+        [scheduleEvents]="scheduleEvents"
+        [businessHours]="businessHours"
+        [event_Constraint]="event_Constraint"
+        [min_sche]="min_sche"
+        [max_sche]="max_sche"
+      ></reservation-schedule>
+
+    </div>
+    <div *ngIf="chartSchedule">
+      <chart-schedule></chart-schedule>
+    </div>
+  </div>
+</div>

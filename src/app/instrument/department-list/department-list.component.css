@@ -1,0 +1,21 @@
+li.selected{
+    background-color: #eeeeee;
+}
+.panel-heading h5{
+  color: #ffffff;
+}
+.panel-body{
+    padding: 15px 0px 15px 0px;
+}
+.panel-heading{
+  background-color: #3a87ad;
+}
+
+ul li a{
+  color: #3a87ad;
+}
+
+ul li a:hover{
+  background-color: #3a87ad;
+  color: #ffffff;
+}

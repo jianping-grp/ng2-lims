@@ -1,0 +1,18 @@
+.instrument_image {
+  width: 95%;
+}
+
+th {
+  min-width: 85px;
+}
+
+.schedule {
+  margin-bottom: 50px;
+}
+
+.panel-heading{
+  background-color: #3a87ad;
+  color: #ffffff;
+}
+
+
