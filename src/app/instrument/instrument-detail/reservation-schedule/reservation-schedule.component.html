@@ -28,6 +28,8 @@
               [contentStyle]="{'overflow':'visible'}"
               [style]="{'overflow':'visible'}" [resizable]="false">
       <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="event">
+
+
         <div class="ui-grid-row">
           <div class="ui-grid-col-4"><label>姓名</label></div>
           <div class="ui-grid-col-8"><input pInputText id="title" [(ngModel)]="event.title" disabled/></div>
@@ -35,11 +37,12 @@
         <div class="ui-grid-row">
           <div class="ui-grid-col-4"><label>开始时间</label></div>
           <!--<div class="ui-grid-col-8"><p-calendar [(ngModel)]="event.start" dateFormat="yy-mm-dd" dataType="string"></p-calendar></div>-->
+          <!--| date:'yyyy-MM-dd HH:mm:ss'-->
           <div class="ui-grid-col-8">
             <input class="picker-input"
                    pInputText
                    dateTimePicker
-                   [value]="event.start | date:'yyyy-MM-dd | HH:mm:ss'"
+                   [value]="event.start"
                    [(ngModel)]="event.start"
                    (onChange)="setStart($event)"
                    [mode]=" 'popup' "
@@ -54,7 +57,7 @@
             <input class="picker-input"
                    pInputText
                    dateTimePicker
-                   [value]="event.end | date:'yyyy-MM-dd | HH:mm:ss'"
+                   [value]="event.end"
                    [(ngModel)]="event.end"
                    (onChange)="setEnd($event)"
                    [mode]=" 'popup' "

@@ -16,6 +16,7 @@ import {DateTimePickerModule} from 'ng-pick-datetime';
 import { DaScheduleComponent } from './instrument-detail/chart-schedule/chart-schedule.component';
 import { ReservationScheduleComponent } from './instrument-detail/reservation-schedule/reservation-schedule.component';
 import {NgZorroAntdModule} from "ng-zorro-antd";
+import {cusTimezone} from "../custom/timezone";
 
 @NgModule({
   imports: [
@@ -42,6 +43,7 @@ import {NgZorroAntdModule} from "ng-zorro-antd";
     InstrumentDetailComponent,
     DaScheduleComponent,
     ReservationScheduleComponent,
+    cusTimezone
   ]
 })
 export class InstrumentModule {

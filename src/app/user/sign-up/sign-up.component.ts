@@ -27,6 +27,7 @@ export class SignUpComponent{
     this.signUpForm = this.fb.group({
       username: ['', [
         Validators.required,
+
       ]],
       password: ['', [
         Validators.required,
@@ -38,10 +39,11 @@ export class SignUpComponent{
       lastname: ['',Validators.required],
       firstname: ['',Validators.required],
       email: ['', [
-        Validators.email
+        Validators.pattern(/\w+@\w+\.\w+/)
       ]],
       phone: ['',[
         Validators.required,
+        Validators.pattern(/^[0-9]{11}$/)
       ]],
       phoneNumberPrefix:['+86'],
       agree:[false,[this.agreeValidator]]
@@ -137,7 +139,7 @@ export class SignUpComponent{
 
 
   onSubmit(){
-    const form = this.signUpForm.value
+    const form = this.signUpForm.value;
     const body = {
       username:form.username,
       password:form.password,
@@ -150,18 +152,17 @@ export class SignUpComponent{
     this.restService.registry(body).subscribe(
       data=>{
         // console.log(data);
-      },
-      err => {
-        if (err.error.username){
-          alert(err.error.username)
-        }
-        if (err.error.email){
-          alert(err.error.email)
-        }
-      },
-      ()=>{
         alert('注册成功');
         this.router.navigate(['./sign-in'])
+      },
+      err => {
+        let er=JSON.parse(err.error);
+        er.username ? alert('该用户名已被注册'): null;
+        er.email ? alert('该邮箱不合法'+err.error.emial) : null;
+
+      },
+      ()=>{
+
       }
     )
 

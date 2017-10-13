@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, LOCALE_ID} from '@angular/core';
 import {ScheduleReservation} from "../../../models/schedule-reservation";
 import {User} from "../../../models/user";
 import {Message} from "primeng/primeng";
@@ -100,12 +100,13 @@ export class ReservationScheduleComponent{
     this.event = new ScheduleReservation();
     let start = e.calEvent.start;
     let end = e.calEvent.end;
+
     this.event.start = start ? start.format() : start.format('YYYY-MM-DD ') + this.instrument.reservation_start_time;
     this.event.end = end ? end.format() : start.add(1, 'h').format();
     this.event.id = e.calEvent.id;
     this.event.title = e.calEvent.title;
     this.event.userId = e.calEvent.userId;
-
+    console.log(this.event.start)
     const now_time = moment().format();
     this.reservationStartTime = start.format('YYYY-MM-DD ') + this.instrument.reservation_start_time;
     this.reservationEndTime = end.format('YYYY-MM-DD ') + this.instrument.reservation_end_time;

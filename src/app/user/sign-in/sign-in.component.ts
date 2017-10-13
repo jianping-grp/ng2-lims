@@ -11,6 +11,7 @@ import {LimsRestService} from "../../service/lims-rest.service";
 export class SignInComponent {
   currentUser:any;
   user_token:string;
+  signInForm: FormGroup;
 
   constructor(
     private restService:LimsRestService,
@@ -33,7 +34,6 @@ export class SignInComponent {
   }
 
 
-  signInForm: FormGroup;
 
   signIn(){
     let username=this.signInForm.value.username;
